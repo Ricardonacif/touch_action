@@ -14,6 +14,7 @@ And then execute:
 
     $ bundle
 
+And then add `require 'touch_action'` to your spec_helper.rb or wherever you want to use it.
 ## WARNING
 It's currently being developed and there are no tests on it. For now, it's only supporting Watir-webdriver.
 
