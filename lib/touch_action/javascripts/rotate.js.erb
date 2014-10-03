@@ -1,0 +1,39 @@
+
+var element_locator = arguments[0];
+
+function loadYui(callback) {
+    // Adding the script tag to the head as suggested before
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "http://yui.yahooapis.com/3.17.2/build/yui/yui-min.js";
+
+    // Then bind the event to the callback function.
+    // There are several events for cross browser compatibility.
+    script.onreadystatechange = callback;
+    script.onload = callback;
+
+    // Fire the loading
+    head.appendChild(script);
+}
+
+var rotate = function() {
+
+  YUI().use('node-event-simulate', function(Y) {
+
+    var node = Y.one(element_locator);
+
+    node.simulateGesture("rotate", {
+        rotation: <%=rotation%>
+    });
+
+  });
+
+};
+
+
+if (typeof YUI == 'undefined') {
+  loadYui(rotate);
+} else {
+  rotate();
+};
