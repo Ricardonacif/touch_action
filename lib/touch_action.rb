@@ -23,12 +23,12 @@ module TouchAction
     render_erb(pinch_file.read, default_options)
   end
 
-  def tap_script
+  def tap_script options = {}
     tap = File.read(File.expand_path("../touch_action/javascripts/tap.js.erb", __FILE__))
     render_erb tap
   end
 
-  def doubletap_script
+  def doubletap_script options = {}
     doubletap = File.read(File.expand_path("../touch_action/javascripts/doubletap.js.erb", __FILE__))
     render_erb doubletap
   end
