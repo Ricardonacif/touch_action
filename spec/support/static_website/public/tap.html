@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Touch Page Test</title>
+  
+  
+  <script type='application/javascript' src='js/hammer.js'></script>
+  <script type='application/javascript' src='js/jquery-2.1.1.min.js'></script>
+  <script type='application/javascript' src='js/fastclick.js'></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+  
+
+  <div id="myElement"></div>
+  <p>Tap, double tap or press (and hold) on the div above and Hammer.js will recognize it.</p>
+
+  <br>
+  <h4>FastClick JS tests:</h4>
+  <a href="#" id='fastclick'>FastClick link</a>
+  <p id="fast-click-test" data-click-number='0'>Not clicked</p>
+  <br><br>
+  
+  <a href="#" id='slowclick' class='needsclick'>Common Link</a>
+  <p id="slow-click-test" data-click-number='0'>Not clicked</p>
+  <br><br>
+  <p>By <a href="https://github.com/Ricardonacif">Ricardo Nacif</a> </p>
+
+<script>
+  $(function() {
+      FastClick.attach(document.body);
+  });
+
+  $("#fastclick").click(function(){
+    times = $('#fast-click-test').data('click-number');
+    times++;
+    $('#fast-click-test').data('click-number', times);
+    $('#fast-click-test').text("You clicked " + times + ' times');
+    return false;
+  });
+
+  $("#slowclick").click(function(){
+    times = $('#slow-click-test').data('click-number');
+    times++;
+    $('#slow-click-test').data('click-number', times);
+    $('#slow-click-test').text("You clicked " + times + ' times');
+    return false;
+  });
+
+
+  var myElement = document.getElementById('myElement');
+
+  // We create a manager object, which is the same as Hammer(), but without the presetted recognizers. 
+  var mc = new Hammer.Manager(myElement);
+
+  // Default, tap recognizer
+  mc.add( new Hammer.Tap() );
+
+  // Tap recognizer with minimal 4 taps
+  mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
+
+  mc.add( new Hammer.Press({ event: 'press' }) );
+
+  // we want to recognize this simulatenous, so a doubletap will be detected even while a tap has been recognized.
+  // the tap event will be emitted on every tap
+  mc.get('doubletap').recognizeWith('tap');
+
+
+  mc.on("press", function(ev) {
+    myElement.textContent += ev.type +" ";
+  });
+
+  mc.on("tap doubletap", function(ev) {
+      myElement.textContent += ev.type +" ";
+  });
+
+</script>
+</body>
+</html>
