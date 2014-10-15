@@ -12,5 +12,4 @@
 *.o
 *.a
 mkmf.log
-console
 .DS_Store

@@ -20,7 +20,7 @@ module TouchAction
     default_options = {r1: 50, r2: 100}
     default_options.merge! options
     pinch = File.read(File.expand_path("../touch_action/javascripts/pinch.js.erb", __FILE__))
-    render_erb(pinch_file.read, default_options)
+    render_erb(pinch, default_options)
   end
 
   def tap_script options = {}

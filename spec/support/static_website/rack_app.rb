@@ -30,4 +30,17 @@ require 'rack'
     ]
   }
   end
+
+  map "/pinch" do
+    run lambda { |env|
+    [
+      200, 
+      {
+        'Content-Type'  => 'text/html', 
+        'Cache-Control' => 'public, max-age=86400' 
+      },
+      File.open('./spec/support/static_website/public/pinch.html', File::RDONLY)
+    ]
+  }
+  end  
 end.to_app

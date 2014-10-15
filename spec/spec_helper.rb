@@ -11,10 +11,20 @@ Dir["./spec/support/**/*.rb"].sort.each { |f| require f}
   Rack::Handler::Thin.run @app, :Port => 9292
 end
 
+capabilities = {
+  :deviceName => 'iPhone Simulator',
+  :browserName => 'Safari',
+  :version => '7.1',
+  :platformName => 'iOS',
+  :app => 'safari'
+}
+
+server_url = "http://127.0.0.1:4723/wd/hub"
+
 RSpec.configure do |config|
 
   config.before(:each) do
-    @browser = Watir::Browser.new :chrome
+    @browser = Watir::Browser.new(Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => server_url))
   end
   config.after(:each) do
     @browser.close
