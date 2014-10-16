@@ -16,7 +16,8 @@ capabilities = {
   :browserName => 'Safari',
   :version => '7.1',
   :platformName => 'iOS',
-  :app => 'safari'
+  :app => 'safari',
+  :newCommandTimeout => 9999
 }
 
 server_url = "http://127.0.0.1:4723/wd/hub"

@@ -10,7 +10,7 @@ module TouchAction
   end
 
   def flick_script options = {}
-    default_options = {axis: 'x', distance: -100,  duration: 50}
+    default_options = {axis: 'x', distance: 100,  duration: 50}
     default_options.merge! options
     flick = File.read(File.expand_path("../touch_action/javascripts/flick.js.erb", __FILE__))
     render_erb(flick, default_options)
