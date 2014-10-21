@@ -2,13 +2,11 @@ fazer specs para:
 
 As opçoes dos que tem opcoes
 
-Move
-
 Rotate
 
-No spec do pinch, por a propriedade do q ta mudando do style
-
 Fazer spec pra ver se ta injetando a parada no element(shoudl respond_to)
+
+
 
 refatorar pra tudo ser gerado de acordo com o nome e o numero de parametros
 
