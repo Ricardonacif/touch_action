@@ -1,14 +1,18 @@
 fazer specs para:
 
-pinch usando http://jsfiddle.net/gilbertolenzi/uZjCB/208/
+As opçoes dos que tem opcoes
 
-Rotate usando:
+Move
+
+Rotate
 
 No spec do pinch, por a propriedade do q ta mudando do style
 
 Fazer spec pra ver se ta injetando a parada no element(shoudl respond_to)
 
-refatorar pra tudo ser gerado de acordo com o nome e o numero de parametros 
+refatorar pra tudo ser gerado de acordo com o nome e o numero de parametros
+
+
 
 suportar selenium tambem (so um porem, no watir o browser eh um e driver eh outro (dentro da classe de element)) (talvez isso nao traga problema)
 

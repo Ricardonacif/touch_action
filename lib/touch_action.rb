@@ -41,7 +41,7 @@ module TouchAction
   end
 
   def move_script options = {}
-    default_options = {xdist: 70, ydist: -50,  duration: 2000}
+    default_options = {xdist: 70, ydist: -50,  duration: 500}
     default_options.merge! options
     move = File.read(File.expand_path("../touch_action/javascripts/move.js.erb", __FILE__))
     render_erb(move, default_options)
