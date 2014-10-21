@@ -1,16 +1,12 @@
-fazer specs para:
-
-As opçoes dos que tem opcoes
-
-Rotate
-
 Fazer spec pra ver se ta injetando a parada no element(shoudl respond_to)
-
-
 
 refatorar pra tudo ser gerado de acordo com o nome e o numero de parametros
 
 
+
+fazer specs para:
+
+As opçoes dos que tem opcoes
 
 suportar selenium tambem (so um porem, no watir o browser eh um e driver eh outro (dentro da classe de element)) (talvez isso nao traga problema)
 
