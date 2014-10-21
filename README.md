@@ -1,6 +1,6 @@
 # TouchAction
 
-Adds touch gestures to Watir and Selenium using YUI JS. Very useful when using Appium to test mobile websites. 
+Touch Action is a Ruby Gem used to add touch gestures simulation to the Watir-webdriver (and Selenium in the near future) in order to perform automated tests on mobile websites that requires those type of actions. It encapsulates the touch action library of [YUI JS](http://yuilibrary.com/yui/docs/event/simulate.html#simulating-touch-gestures). Very useful for example when testing mobile websites using [Appium](http://appium.io).
 
 ## Installation
 
@@ -15,30 +15,30 @@ And then execute:
     $ bundle
 
 And then add `require 'touch_action'` to your spec_helper.rb or wherever you want to use it.
-## WARNING
-It's currently being developed and there are no tests on it. For now, it's only supporting Watir-webdriver.
 
 ## Usage
 
 ```ruby
-  #on the element you want to perform the action, call touch_action(:name_of_method)
+  #on the element you want to perform the action, call touch_action(:name_of_action)
   element = @driver.div(:id, 'hit')
   element.touch_action(:swipe)
 ```
 ###Available Gestures
-It's currently supporting the gestures bellow. The hash as second argument is optional (here it's showing the default for each action).
+
+It's currently supporting the gestures bellow. The only required argument is the action symbol, the rest are optional (here it's showing the default options for each action).
+
 ```ruby
-  element.touch_action(:flick, {axis: 'x', distance: -100,  duration: 50}) #flick and swipe are the same 
+  element.touch_action(:flick, axis: 'x', distance: 100,  duration: 50) #flick and swipe are the same 
   
-  element.touch_action(:pinch, {r1: 50, r2: 100})
+  element.touch_action(:pinch, r1: 50, r2: 100)
   
   element.touch_action(:tap)
   
   element.touch_action(:doubletap)
   
-  element.touch_action(:press,  {hold: 2000})
+  element.touch_action(:press,  hold: 2000)
   
-  element.touch_action(:move, {xdist: 70, ydist: -50,  duration: 2000})
+  element.touch_action(:move, xdist: 70, ydist: -50,  duration: 500)
   
   element.touch_action(:rotate, {rotation: -75})
   

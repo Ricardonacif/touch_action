@@ -1,3 +1,3 @@
 module TouchAction
-  VERSION = "0.0.2alpha"
+  VERSION = "0.1.0"
 end

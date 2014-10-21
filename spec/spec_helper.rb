@@ -11,16 +11,20 @@ Dir["./spec/support/**/*.rb"].sort.each { |f| require f}
   Rack::Handler::Thin.run @app, :Port => 9292
 end
 
-ios_capabilities = {
-  :deviceName => 'iPhone 5s',
-  :browserName => 'Safari',
-  :platformVersion => '7.1',
-  :platformName => 'iOS',
-  :app => 'safari',
-  :newCommandTimeout => 9999
-}
 
-android_capabilities = {
+case ENV['platform']
+when 'ios'
+  capabilities = {
+    :deviceName => 'iPhone 5s',
+    :browserName => 'Safari',
+    :platformVersion => '7.1',
+    :platformName => 'iOS',
+    :app => 'safari',
+    :newCommandTimeout => 9999
+  }
+
+when 'android'
+  capabilities = {
 
   :deviceName => 'android_simulator',
   :version => '4.4.2',
@@ -31,13 +35,20 @@ android_capabilities = {
   autoAcceptAlerts: true
 }
 
-server_url = "http://127.0.0.1:4723/wd/hub"
+end
+
+
+ENV['appium_url'] ||= "http://127.0.0.1:4723/wd/hub"
+ENV['browser'] ||= 'firefox'
 
 RSpec.configure do |config|
 
   config.before(:each) do
-    # @browser = Watir::Browser.new :chrome
-    @browser = Watir::Browser.new(Selenium::WebDriver.for(:remote, :desired_capabilities => ios_capabilities, :url => server_url))
+    if ENV['platform']
+      @browser = Watir::Browser.new(Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => ENV['appium_url']))
+    else
+      @browser = Watir::Browser.new ENV['browser']
+    end
   end
   config.after(:each) do
     @browser.close if @browser
