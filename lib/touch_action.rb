@@ -1,7 +1,13 @@
 require 'erb'
 require 'ostruct'
 require "touch_action/version"
-require 'watir-webdriver'
+
+if Gem::Specification::find_all_by_name('watir-webdriver').any?
+  require 'watir-webdriver'
+elsif Gem::Specification::find_all_by_name('selenium-webdriver').any?
+  require 'selenium-webdriver'
+end
+
 
 module TouchAction
 
@@ -22,7 +28,11 @@ module TouchAction
     options = default_options.merge options
     script = File.read(File.expand_path("../touch_action/javascripts/#{action.to_s}.js.erb", __FILE__))
     final_script = render_erb(script, options)
-    browser.execute_script( final_script, self )
+    if self.class == Selenium::WebDriver::Element
+      bridge.executeScript( final_script, self )
+    else
+      browser.execute_script( final_script, self )
+    end
   end
 
 private
@@ -33,4 +43,12 @@ private
 
 end
 
-Watir::Element.class_eval { include TouchAction }
+if Gem::Specification::find_all_by_name('watir-webdriver').any?
+  Watir::Element.class_eval { include TouchAction }
+elsif Gem::Specification::find_all_by_name('selenium-webdriver').any?
+  Selenium::WebDriver::Element.class_eval { include TouchAction }
+end
+
+
+
+

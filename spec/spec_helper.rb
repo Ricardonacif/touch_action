@@ -48,6 +48,7 @@ RSpec.configure do |config|
       @browser = Watir::Browser.new(Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => ENV['appium_url']))
     else
       @browser = Watir::Browser.new ENV['browser']
+      # @browser = Selenium::WebDriver.for :firefox
     end
   end
   config.after(:each) do
