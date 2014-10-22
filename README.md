@@ -1,4 +1,6 @@
 # TouchAction
+[![Build Status](https://travis-ci.org/Ricardonacif/touch_action.svg?branch=master)](https://travis-ci.org/Ricardonacif/touch_action)
+[![Code Climate](https://codeclimate.com/github/Ricardonacif/touch_action/badges/gpa.svg)](https://codeclimate.com/github/Ricardonacif/touch_action)
 
 Touch Action is a Ruby Gem used to add touch gestures simulation to the Watir-WebDriver and Selenium-WebDriver in order to perform automated tests on mobile websites that requires those type of actions. It encapsulates the touch action library of [YUI JS](http://yuilibrary.com/yui/docs/event/simulate.html#simulating-touch-gestures). Very useful for example when testing mobile websites using [Appium](http://appium.io).
 
