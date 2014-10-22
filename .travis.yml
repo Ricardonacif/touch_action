@@ -7,3 +7,4 @@ before_script:
   - sleep 3 # give xvfb some time to start
 script:
   - bundle exec rspec
+before_install: gem install bundler --pre
