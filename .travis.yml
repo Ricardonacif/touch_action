@@ -1,10 +1,12 @@
 language: ruby
 rvm:
 - 2.1.2
+before_install: 
+  - gem install bundler --pre
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
+  - gem install bundler --pre
 script:
   - bundle exec rspec
-before_install: gem install bundler --pre
