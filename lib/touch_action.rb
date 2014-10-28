@@ -14,20 +14,20 @@ module TouchAction
   ACTIONS_WITH_DEFAULT_OPTIONS = {
     tap: {},
     doubletap: {},
-    flick: {axis: 'x', distance: 100,  duration: 50},
+    flick: {axis: 'x', distance: 100,  duration: 500},
     pinch: {r1: 50, r2: 100},
     press: {hold: 2000},
-    move: {xdist: 70, ydist: -50,  duration: 500},
+    move: {path: {xdist: 70, ydist: -50},  duration: 500},
     rotate: {rotation: -75}
   }
 
   def touch_action action, options = {}
     action = :flick if action == :swipe
     raise ArgumentError, "The touch action #{action} doesn't exist" unless ACTIONS_WITH_DEFAULT_OPTIONS[action]
+    script = File.read(File.expand_path("../touch_action/javascripts/touch_action.js.erb", __FILE__))    
     default_options = ACTIONS_WITH_DEFAULT_OPTIONS[action]
-    options = default_options.merge options
-    script = File.read(File.expand_path("../touch_action/javascripts/#{action.to_s}.js.erb", __FILE__))
-    final_script = render_erb(script, options)
+    arguments = {gesture: action.to_s, options: default_options.merge(options)}
+    final_script = render_erb(script, arguments)
     if self.class == Selenium::WebDriver::Element
       bridge.executeScript( final_script, self )
     else
