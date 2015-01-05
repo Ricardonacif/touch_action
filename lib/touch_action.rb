@@ -9,6 +9,5 @@ if Gem::Specification::find_all_by_name('selenium-webdriver').any?
 end
 
 if Gem::Specification::find_all_by_name('capybara').any?
-  require 'touch_action/capybara'
   require 'touch_action/capybara_rspec_helper'
 end

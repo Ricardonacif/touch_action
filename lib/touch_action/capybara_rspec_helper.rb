@@ -6,7 +6,8 @@ module TouchAction
     module RspecHelper
 
       def touch_action locator, *args
-        find(locator).touch_action *args
+        final_script = TouchAction::ScriptGenerator.generate_javascript(*args)
+        page.driver.browser.execute_script( final_script, locator )
       end
 
     end
