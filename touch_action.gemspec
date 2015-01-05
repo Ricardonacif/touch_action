@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = TouchAction::VERSION
   spec.authors       = ["Ricardo Nacif"]
   spec.email         = ["nacif.ricardo@gmail.com"]
-  spec.summary       = "Adds touch gestures to Watir-WebDriver and Selenium-WebDriver using YUI JS."
-  spec.description   = "Adds touch gestures to Watir and Selenium using YUI JS."
+  spec.summary       = "Adds touch gestures simulation to Watir-WebDriver, Selenium-WebDriver and Capybara using YUI JS."
+  spec.description   = "Adds touch gestures simulation to Watir, Selenium and Capybara using YUI JS."
   spec.homepage      = "https://github.com/Ricardonacif/touch_action"
   spec.license       = "MIT"
 

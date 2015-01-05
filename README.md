@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/Ricardonacif/touch_action.svg?branch=master)](https://travis-ci.org/Ricardonacif/touch_action)
 [![Code Climate](https://codeclimate.com/github/Ricardonacif/touch_action/badges/gpa.svg)](https://codeclimate.com/github/Ricardonacif/touch_action)
 
-Touch Action is a Ruby Gem used to add touch gestures simulation to the Watir-WebDriver and Selenium-WebDriver in order to perform automated tests on mobile websites that requires those type of actions. It encapsulates the touch action library of [YUI JS](http://yuilibrary.com/yui/docs/event/simulate.html#simulating-touch-gestures). Very useful for example when testing mobile websites using [Appium](http://appium.io).
+Touch Action is a Ruby Gem used to add touch gestures simulation to the Watir-WebDriver, Selenium-WebDriver anc Capybara in order to perform automated tests on (mobile and desktops) websites that requires those type of actions. It encapsulates the touch action library of [YUI JS](http://yuilibrary.com/yui/docs/event/simulate.html#simulating-touch-gestures). Very useful for example when testing mobile websites using [Appium](http://appium.io).
 
 ## Installation
 
@@ -44,6 +44,17 @@ It's currently supporting the gestures bellow. The only required argument is the
   
   element.touch_action(:rotate, {rotation: -75})
   
+```
+###Capybara and RSpec
+
+To use it with Capybara and Rspec, just do the following:
+
+```ruby
+    it "should tap using capybara", js: true do
+        visit('http://mywebsite.com')
+        touch_action '#myElement', :tap #it will also accept options here
+    end
+
 ```
 For more information about how those methods work, please check the [YUI Documentation](http://yuilibrary.com/yui/docs/event/simulate.html#simulating-touch-gestures).
 

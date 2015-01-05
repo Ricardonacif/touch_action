@@ -20,7 +20,6 @@ RSpec.describe TouchAction do
     it "should tap using webdriver capybara", js: true, use_webdriver: :capybara do
       visit('http://localhost:9292/tap')
       touch_action '#myElement', :tap
-      binding.pry
       sleep(5)
       expect(find("#myElement").text).to include('tap')
     end
