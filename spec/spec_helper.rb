@@ -4,6 +4,8 @@ require 'rack'
 require 'thin'
 require 'touch_action'
 require 'watir-webdriver'
+require 'capybara'
+require 'capybara/rspec'
 
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f}
 
@@ -43,12 +45,18 @@ ENV['browser'] ||= 'firefox'
 
 RSpec.configure do |config|
 
-  config.before(:each) do
+  config.before(:each) do |example|
     if ENV['platform']
       @browser = Watir::Browser.new(Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => ENV['appium_url']))
     else
-      @browser = Watir::Browser.new ENV['browser']
-      # @browser = Selenium::WebDriver.for :firefox
+      case example.metadata[:use_webdriver] 
+      when :selenium
+        @browser = Selenium::WebDriver.for :firefox
+      when :capybara
+        #do nothing
+      else
+        @browser = Watir::Browser.new ENV['browser']
+      end
     end
   end
   config.after(:each) do
