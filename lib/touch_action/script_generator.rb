@@ -1,6 +1,5 @@
 require 'erb'
 require 'ostruct'
-require "active_support/core_ext"
 
 module TouchAction
   class ScriptGenerator
@@ -28,7 +27,6 @@ module TouchAction
     def self.render_erb template, vars = {}
       ERB.new(template).result(OpenStruct.new(vars).instance_eval { binding })
     end
-
 
   end
 end
