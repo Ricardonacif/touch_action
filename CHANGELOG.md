@@ -1,3 +1,12 @@
+## v1.1.0
+
+* fully refactored
+* added support to capybara
+
+## v1.0.0
+
+* stable version
+
 ## v0.0.2alpha
 
 * fixed methods that didn't received a parameter
