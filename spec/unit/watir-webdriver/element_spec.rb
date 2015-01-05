@@ -5,7 +5,7 @@ RSpec.describe Watir::Element do
     it 'should respond to the method touch_action' do
       @browser.goto('http://localhost:9292')
       element = @browser.div(id: 'hit')
-      expect(element.respond_to?(:touch_action)).to be_equal(true)
+      expect(element).to respond_to(:touch_action)
     end
   end
 end
