@@ -9,6 +9,15 @@ module TouchAction
       browser.driver.execute_async_script( TouchAction::ScriptGenerator.yui_loader )
       final_script = TouchAction::ScriptGenerator.generate_javascript(*args)
       browser.driver.execute_async_script( final_script, self.wd  )
+      wait_for_page_ready_state
+    end
+
+
+  private
+
+    def wait_for_page_ready_state
+      sleep(0.5) # mobile browsers wait around 300ms when tapping to check if it isn's a double tap before triggering the link
+      browser.wait
     end
   end
 
