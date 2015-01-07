@@ -1,38 +1,15 @@
 (function( touch_action, $, undefined ) {
 
-  // private property
-  var execute_gesture = function() {
+  touch_action.perform_gesture = function(selenium_finalized_callback) {
+
     YUI().use('node-event-simulate', function(Y) {
       
       var node = Y.one(touch_action.element);
       node.simulateGesture(touch_action.gesture, touch_action.options);
         
-    });
-  };
+    });    
 
-  // private method
-  function loadYui() { 
-
-    var head = document.getElementsByTagName('head')[0];
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = "//yui.yahooapis.com/3.18.1/build/yui/yui-min.js";
-
-    script.onreadystatechange = execute_gesture;
-    script.onload = execute_gesture;
-
-    head.appendChild(script);
- 
-  };
-  // public method
-  touch_action.perform = function() {
-    
-    if (typeof YUI == 'undefined') {
-      loadYui();
-    } else {
-      execute_gesture();
-    };
-
+    selenium_finalized_callback();
   };
 
 
@@ -44,4 +21,4 @@ touch_action.gesture = "<%=gesture%>";
 
 touch_action.options =  <%=options.to_json%>;
 
-touch_action.perform();
+touch_action.perform_gesture(arguments[arguments.length - 1]);

@@ -13,6 +13,10 @@ module TouchAction
       rotate: {rotation: -75}
     }
 
+    def self.yui_loader
+      yui_loader_script = File.read(File.expand_path("../javascripts/yui_loader.js", __FILE__))
+    end
+
     def self.generate_javascript action, options = {}
       action = :flick if action == :swipe
       raise ArgumentError, "The touch action #{action} doesn't exist" unless ACTIONS_WITH_DEFAULT_OPTIONS[action]

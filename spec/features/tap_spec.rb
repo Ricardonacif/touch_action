@@ -24,5 +24,12 @@ RSpec.describe TouchAction do
       expect(find("#myElement").text).to include('tap')
     end
 
+    it "should tap using selenium", js: true, use_webdriver: :selenium do
+      @browser.navigate.to('http://localhost:9292/tap')
+      element = @browser.find_element(:id, 'myElement')
+      element.touch_action :tap
+      expect(element.text).to include('tap')
+    end
+
   end
 end
