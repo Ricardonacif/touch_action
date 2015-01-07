@@ -1,5 +1,13 @@
 ## v1.1.0
 
+* added execution block until YUI is loaded and gesture is performed
+* added readyState checking in order to wait for pages to load when using tap on links for example
+
+## v1.0.0
+
+
+## v1.1.0
+
 * fully refactored
 * added support to capybara
 
