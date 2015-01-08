@@ -14,12 +14,12 @@ Dir["./spec/support/**/*.rb"].sort.each { |f| require f}
 end
 
 
-case ENV['platform']
+case ENV['PLATFORM']
 when 'ios'
   capabilities = {
     :deviceName => 'iPhone 5s',
     :browserName => 'Safari',
-    :platformVersion => '7.1',
+    :platformVersion => '8.1',
     :platformName => 'iOS',
     :app => 'safari',
     :newCommandTimeout => 9999
@@ -46,7 +46,7 @@ ENV['browser'] ||= 'firefox'
 RSpec.configure do |config|
 
   config.before(:each) do |example|
-    if ENV['platform']
+    if ENV['PLATFORM']
       @browser = Watir::Browser.new(Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => ENV['appium_url']))
     else
       case example.metadata[:use_webdriver] 
