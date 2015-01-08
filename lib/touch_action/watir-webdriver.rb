@@ -17,7 +17,7 @@ module TouchAction
 
     def wait_for_page_ready_state
       sleep(0.5) # mobile browsers wait around 300ms when tapping to check if it isn's a double tap before triggering the link
-      browser.wait
+      browser.wait(60)
     end
   end
 
