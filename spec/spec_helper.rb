@@ -19,7 +19,7 @@ when 'ios'
   capabilities = {
     :deviceName => 'iPhone 5s',
     :browserName => 'Safari',
-    :platformVersion => '8.1',
+    :platformVersion => '8.2',
     :platformName => 'iOS',
     :app => 'safari',
     :newCommandTimeout => 9999

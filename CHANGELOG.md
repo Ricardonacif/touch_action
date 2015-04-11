@@ -1,3 +1,11 @@
+## v1.3.0
+
+* stable version
+
+## v1.2.1
+
+* unusable version
+
 ## v1.1.0
 
 * fully refactored
