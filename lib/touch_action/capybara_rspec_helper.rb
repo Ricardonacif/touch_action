@@ -16,4 +16,4 @@ end
 
 RSpec.configure do |config|
   config.include TouchAction::Capybara::RspecHelper, :type => :feature
-end
+end if defined?(RSpec)
