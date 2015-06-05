@@ -1,3 +1,7 @@
+## v1.3.1
+
+* check if Rspec is loaded before creating capybara helper
+
 ## v1.3.0
 
 * stable version
