@@ -1,3 +1,7 @@
+## v1.3.2
+
+* Changed YUI JS javascript CDN
+
 ## v1.3.1
 
 * check if Rspec is loaded before creating capybara helper
