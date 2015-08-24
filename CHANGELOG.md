@@ -1,3 +1,7 @@
+## v1.3.3
+
+* Added support to capybara native elements
+
 ## v1.3.2
 
 * Changed YUI JS javascript CDN
