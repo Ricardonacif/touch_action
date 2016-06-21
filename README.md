@@ -39,7 +39,7 @@ It's currently supporting the gestures bellow. The only required argument is the
   
   element.touch_action(:press,  hold: 2000)
   
-  element.touch_action(:move, xdist: 70, ydist: -50,  duration: 500)
+  element.touch_action(:move, path: {xdist: 70, ydist: -50}, duration: 500)
   
   element.touch_action(:rotate, {rotation: -75})
   
